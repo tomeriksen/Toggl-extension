@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": [ "scripts/background.js" ]
+      "scripts": [ "scripts/vendor/bugsnag-2.min.js", "scripts/background.js" ]
    },
    "browser_action": {
       "default_icon": {
@@ -13,7 +13,7 @@
    "content_scripts": [ {
       "css": [ "styles/style.css" ],
       "js": [ "scripts/common.js" ],
-      "matches": [ "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://*.bitbucket.org/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.atlassian.com/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/app*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.toodledo.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://mail.google.com/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://waffle.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*" ]
+      "matches": [ "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://*.bitbucket.org/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.atlassian.com/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/app*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.toodledo.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://mail.google.com/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://waffle.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*", "*://*.draftin.com/*", "*://*.fogbugz.com/*" ]
    }, {
       "js": [ "scripts/content/toggl.js" ],
       "matches": [ "*://www.toggl.com/app/timer", "*://www.toggl.com/", "*://toggl.com/app/timer", "*://toggl.com/" ]
@@ -161,9 +161,15 @@
    }, {
       "js": [ "scripts/content/salesforce.js" ],
       "matches": [ "*://*.salesforce.com/*" ]
+   }, {
+      "js": [ "scripts/content/draftin.js" ],
+      "matches": [ "*://*.draftin.com/*" ]
+   }, {
+      "js": [ "scripts/content/fogbugz.js" ],
+      "matches": [ "*://*.fogbugz.com/*" ]
    } ],
    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
-   "description": "Time report from google Cal",
+   "description": "Add Official Toggl Online Timer to Popular Web Tools",
    "icons": {
       "128": "images/icon-128.png",
       "16": "images/icon-16.png",
@@ -171,13 +177,14 @@
    },
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVidQFi+jT9znvDHSngl7sx6HUrOks4n98+GH89WYooQAlz3Il7b1Gj3b72kysBSZbzq4HwNFEgwd3rht7TxSAOfydvK9E5897aGY/YLIAJ+T9Fen5YZmNUlBeVipx+eALZP4vx8dzQK49LfK9QKSuOSqLDqk+zpDSrZd2VAm8iQIDAQAB",
    "manifest_version": 2,
-   "name": "Toggl Google Calendar Button",
+   "name": "Toggl Button",
    "options_page": "html/settings.html",
    "options_ui": {
       "chrome_style": true,
       "page": "html/settings.html"
    },
-   "permissions": [ "contextMenus", "notifications", "idle", "*://*.toggl.com/*", "*://toggl.com/*", "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.bitbucket.org/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://waffle.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*" ],
-   "short_name": "Toggl Cal Btn",
-   "version": "0.1"
+   "permissions": [ "alarms", "contextMenus", "notifications", "idle", "*://*.toggl.com/*", "*://toggl.com/*", "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.bitbucket.org/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://waffle.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*", "*://*.draftin.com/*", "*://*.fogbugz.com/*" ],
+   "short_name": "Google Cal Toggl Button",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.7.4"
 }
