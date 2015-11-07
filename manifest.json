@@ -13,160 +13,19 @@
    "content_scripts": [ {
       "css": [ "styles/style.css" ],
       "js": [ "scripts/common.js" ],
-      "matches": [ "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://*.bitbucket.org/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.atlassian.com/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/app*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.toodledo.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://mail.google.com/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://waffle.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*", "*://*.draftin.com/*", "*://*.fogbugz.com/*" ]
+      "matches": [  "*://docs.google.com/*",  "*://mail.google.com/*",  "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*"]
    }, {
       "js": [ "scripts/content/toggl.js" ],
       "matches": [ "*://www.toggl.com/app/timer", "*://www.toggl.com/", "*://toggl.com/app/timer", "*://toggl.com/" ]
    }, {
-      "js": [ "scripts/content/teamweek_new.js" ],
-      "matches": [ "*://app.teamweek.com/*" ]
-   }, {
-      "js": [ "scripts/content/pivotal.js" ],
-      "matches": [ "*://*.pivotaltracker.com/*" ]
-   }, {
-      "js": [ "scripts/content/producteev.js" ],
-      "matches": [ "*://*.producteev.com/*" ]
-   }, {
-      "js": [ "scripts/content/bitbucket.js" ],
-      "matches": [ "*://*.bitbucket.org/*" ]
-   }, {
-      "js": [ "scripts/content/github.js" ],
-      "matches": [ "*://*.github.com/*" ]
-   }, {
-      "js": [ "scripts/content/gitlab.js" ],
-      "matches": [ "*://*.gitlab.com/*" ]
-   }, {
-      "js": [ "scripts/content/testrail.js" ],
-      "matches": [ "*://*.testrail.com/*", "*://*.testrail.net/*" ]
-   }, {
-      "js": [ "scripts/content/asana.js" ],
-      "matches": [ "*://app.asana.com/*" ]
-   }, {
-      "js": [ "scripts/content/unfuddle.js" ],
-      "matches": [ "*://*.unfuddle.com/*" ]
-   }, {
-      "js": [ "scripts/content/podio.js" ],
-      "matches": [ "*://*.podio.com/*" ]
-   }, {
-      "js": [ "scripts/content/redbooth.js" ],
-      "matches": [ "*://*.redbooth.com/*" ]
-   }, {
-      "js": [ "scripts/content/trello.js" ],
-      "matches": [ "*://*.trello.com/*" ]
-   }, {
-      "js": [ "scripts/content/worksection.js" ],
-      "matches": [ "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*" ]
-   }, {
-      "js": [ "scripts/content/basecamp.js" ],
-      "matches": [ "*://*.basecamp.com/*", "*://*.basecamphq.com/*" ]
-   }, {
-      "js": [ "scripts/content/jira.js" ],
-      "matches": [ "*://*.atlassian.net/*", "*://*.atlassian.com/*", "*://*.jira.com/*" ]
-   }, {
-      "js": [ "scripts/content/sifterapp.js" ],
-      "matches": [ "*://*.sifterapp.com/*" ]
-   }, {
       "js": [ "scripts/content/google-docs.js" ],
       "matches": [ "*://docs.google.com/*" ]
-   }, {
-      "js": [ "scripts/content/redmine.js" ],
-      "matches": [ "*://*.redmine.org/*" ]
-   }, {
-      "js": [ "scripts/content/youtrack.js" ],
-      "matches": [ "*://*.myjetbrains.com/*" ]
-   }, {
-      "js": [ "scripts/content/capsule.js" ],
-      "matches": [ "*://*.capsulecrm.com/*" ]
-   }, {
-      "js": [ "scripts/content/zendesk.js" ],
-      "matches": [ "*://*.zendesk.com/*" ]
-   }, {
-      "js": [ "scripts/content/xero.js" ],
-      "matches": [ "*://go.xero.com/*" ]
-   }, {
-      "js": [ "scripts/content/anydo.js" ],
-      "matches": [ "*://web.any.do/*" ]
-   }, {
-      "js": [ "scripts/content/todoist.js" ],
-      "matches": [ "*://*.todoist.com/app*" ]
-   }, {
-      "js": [ "scripts/content/teamworkpm.js" ],
-      "matches": [ "*://*.teamwork.com/*", "*://*.teamworkpm.net/*" ]
-   }, {
-      "js": [ "scripts/content/trac.js" ],
-      "matches": [ "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*" ]
-   }, {
-      "js": [ "scripts/content/wunderlist.js" ],
-      "matches": [ "*://*.wunderlist.com/*" ]
-   }, {
-      "js": [ "scripts/content/toodledo.js" ],
-      "matches": [ "*://*.toodledo.com/*" ]
-   }, {
+   },   {
       "js": [ "scripts/content/google-mail.js" ],
       "matches": [ "*://mail.google.com/*" ]
    }, {
-      "js": [ "scripts/content/habitrpg.js" ],
-      "matches": [ "*://*.habitica.com/*" ]
-   }, {
-      "js": [ "scripts/content/taiga.js" ],
-      "matches": [ "*://*.taiga.io/*" ]
-   }, {
-      "js": [ "scripts/content/axosoft.js" ],
-      "matches": [ "*://*.axosoft.com/*" ]
-   }, {
-      "js": [ "scripts/content/gemini.js" ],
-      "matches": [ "*://*.ongemini.com/*" ]
-   }, {
-      "js": [ "scripts/content/drupalorg.js" ],
-      "matches": [ "*://*.drupal.org/*" ]
-   }, {
-      "js": [ "scripts/content/esa.js" ],
-      "matches": [ "*://*.esa.io/*" ]
-   }, {
-      "js": [ "scripts/content/helpscout.js" ],
-      "matches": [ "*://secure.helpscout.net/*" ]
-   }, {
-      "js": [ "scripts/content/getflow.js" ],
-      "matches": [ "*://*.getflow.com/*" ]
-   }, {
-      "js": [ "scripts/content/sprintly.js" ],
-      "matches": [ "*://sprint.ly/*" ]
-   }, {
-      "js": [ "scripts/content/wrike.js" ],
-      "matches": [ "*://*.wrike.com/*" ]
-   }, {
       "js": [ "scripts/content/google-calendar.js" ],
       "matches": [ "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*" ]
-   }, {
-      "js": [ "scripts/content/bugzilla.js" ],
-      "matches": [ "*://bugzilla.mozilla.org/*" ]
-   }, {
-      "js": [ "scripts/content/dobambam.js" ],
-      "matches": [ "*://*.dobambam.com/*" ]
-   }, {
-      "js": [ "scripts/content/breeze.js" ],
-      "matches": [ "*://app.breeze.pm/*" ]
-   }, {
-      "js": [ "scripts/content/gqueues.js" ],
-      "matches": [ "*://www.gqueues.com/*" ]
-   }, {
-      "js": [ "scripts/content/codeable.js" ],
-      "matches": [ "*://app.codeable.io/*" ]
-   }, {
-      "js": [ "scripts/content/waffle.io.js" ],
-      "matches": [ "*://waffle.io/*" ]
-   }, {
-      "js": [ "scripts/content/assembla.js" ],
-      "matches": [ "*://www.assembla.com/*" ]
-   }, {
-      "js": [ "scripts/content/salesforce.js" ],
-      "matches": [ "*://*.salesforce.com/*" ]
-   }, {
-      "js": [ "scripts/content/draftin.js" ],
-      "matches": [ "*://*.draftin.com/*" ]
-   }, {
-      "js": [ "scripts/content/fogbugz.js" ],
-      "matches": [ "*://*.fogbugz.com/*" ]
    } ],
    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
    "description": "Add Official Toggl Online Timer to Popular Web Tools",
@@ -183,7 +42,7 @@
       "chrome_style": true,
       "page": "html/settings.html"
    },
-   "permissions": [ "alarms", "contextMenus", "notifications", "idle", "*://*.toggl.com/*", "*://toggl.com/*", "*://*.teamweek.com/*", "*://*.pivotaltracker.com/*", "*://*.github.com/*", "*://*.gitlab.com/*", "*://*.testrail.com/*", "*://*.testrail.net/*", "*://app.asana.com/*", "*://*.unfuddle.com/*", "*://*.podio.com/*", "*://*.redbooth.com/*", "*://*.trello.com/*", "*://*.worksection.com/*", "*://*.worksection.eu/*", "*://*.worksection.net/*", "*://*.basecamp.com/*", "*://*.basecamphq.com/*", "*://*.atlassian.net/*", "*://*.jira.com/*", "*://*.producteev.com/*", "*://*.bitbucket.org/*", "*://*.sifterapp.com/*", "*://docs.google.com/*", "*://*.redmine.org/*", "*://*.myjetbrains.com/*", "*://*.capsulecrm.com/*", "*://*.zendesk.com/*", "*://go.xero.com/*", "*://web.any.do/*", "*://*.todoist.com/*", "*://trac.edgewall.org/*", "*://trac-hacks.org/*", "*://*.trac.wordpress.org/*", "*://bugs.jquery.com/*", "*://*.wunderlist.com/*", "*://*.teamwork.com/*", "*://*.teamworkpm.net/*", "*://*.habitica.com/*", "*://*.taiga.io/*", "*://*.axosoft.com/*", "*://*.ongemini.com/*", "*://*.drupal.org/*", "*://*.esa.io/*", "*://waffle.io/*", "*://secure.helpscout.net/*", "*://*.getflow.com/*", "*://sprint.ly/*", "*://*.wrike.com/*", "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*", "*://bugzilla.mozilla.org/*", "*://*.dobambam.com/*", "*://app.breeze.pm/*", "*://www.gqueues.com/*", "*://app.codeable.io/*", "*://www.assembla.com/*", "*://*.salesforce.com/*", "*://*.draftin.com/*", "*://*.fogbugz.com/*" ],
+   "permissions": [ "alarms", "contextMenus", "notifications", "idle", "*://*.toggl.com/*", "*://toggl.com/*",  "*://docs.google.com/*",  "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*"],
    "short_name": "Google Cal Toggl Button",
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "0.7.4"
