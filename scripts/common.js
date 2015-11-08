@@ -153,6 +153,8 @@ var togglbutton = {
     return result + selected.text;
   },
 
+  //called from background.js after creating a time entry.
+  
   addEditForm: function (response) {
     togglbutton.hasTasks = response.hasTasks;
     if (response === null || !response.showPostPopup) {
@@ -213,6 +215,7 @@ var togglbutton = {
     };
 
     submitForm = function (that) {
+		//pack everything you need to update
       var taskButton = $("#toggl-button-task"),
         selectedProject = $("#toggl-button-project"),
         request = {
@@ -276,8 +279,9 @@ var togglbutton = {
       editForm.style.display = "none";
     });
 
+//user clicks DONE!
     $("#toggl-button-update", editForm).addEventListener('click', function (e) {
-      submitForm(this);
+		submitForm(this); 
     });
 
     $("form", editForm).addEventListener('submit', function (e) {
@@ -387,6 +391,7 @@ var togglbutton = {
   },
 
 //called by render
+  //todo: kolla upp om det här tiden redan är inrapporterd
   createTimerLink: function (params) {
     var link = createLink('toggl-button');
     togglbutton.currentDescription = invokeIfFunction(params.description);
@@ -443,7 +448,7 @@ var togglbutton = {
         };
       }
       togglbutton.element = e.target;
-      chrome.extension.sendMessage(opts, togglbutton.addEditForm);
+      chrome.extension.sendMessage(opts, togglbutton.addEditForm); //addEditForm is called from background.js after API callback
 
       return false;
     });

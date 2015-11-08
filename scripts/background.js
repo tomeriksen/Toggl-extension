@@ -1,6 +1,6 @@
 /*jslint indent: 2, unparam: true, plusplus: true, nomen: true */
 /*global window: false, XMLHttpRequest: false, WebSocket: false, chrome: false, btoa: false, localStorage:false, document: false, Audio: false, Bugsnag: false */
-//Contains TogglButton which controls the behaviour connected to the link in Google 
+//This is the DOM TogglButton
 "use strict";
 
 Bugsnag.apiKey = "7419717b29de539ab0fbe35dcd7ca19d";
@@ -49,6 +49,8 @@ var TogglButton = {
       '<div class="toggl-button-row">' +
         '<input name="toggl-button-description" type="text" id="toggl-button-description" class="toggl-button-input" value="" placeholder="(no description)">' +
       '</div>' +
+        '<input name="toggl-button-start" type="hidden" id="toggl-button-start" class="toggl-button-input" value="" placeholder="(no description)">' +
+        '<input name="toggl-button-duration" type="hidden" id="toggl-button-duration" class="toggl-button-input" value="" placeholder="(no description)">' +
       '<div class="toggl-button-row">' +
         '<select class="toggl-button-input" id="toggl-button-project" name="toggl-button-project">{projects}</select>' +
         '<div id="toggl-button-project-placeholder" class="toggl-button-input" disabled><div class="toggl-button-text">Add project</div><span>▼</span></div>' +
