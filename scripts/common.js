@@ -386,6 +386,7 @@ var togglbutton = {
     });
   },
 
+//called by render
   createTimerLink: function (params) {
     var link = createLink('toggl-button');
     togglbutton.currentDescription = invokeIfFunction(params.description);
@@ -433,6 +434,8 @@ var togglbutton = {
           respond: true,
           projectId: invokeIfFunction(params.projectId),
           description: invokeIfFunction(params.description),
+			 start: params.startDate,
+			duration: invokeIfFunction(params.duration),
           tags: invokeIfFunction(params.tags),
           projectName: invokeIfFunction(params.projectName),
           createdWith: togglbutton.fullVersion + "-" + togglbutton.serviceName,

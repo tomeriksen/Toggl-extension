@@ -1,6 +1,6 @@
 /*jslint indent: 2, unparam: true, plusplus: true, nomen: true */
 /*global window: false, XMLHttpRequest: false, WebSocket: false, chrome: false, btoa: false, localStorage:false, document: false, Audio: false, Bugsnag: false */
-//Contains TogglButton which controls the behaviour connected to the link in Google Calendar
+//Contains TogglButton which controls the behaviour connected to the link in Google 
 "use strict";
 
 Bugsnag.apiKey = "7419717b29de539ab0fbe35dcd7ca19d";
@@ -240,20 +240,23 @@ var TogglButton = {
   },
 
   createTimeEntry: function (timeEntry, sendResponse) {
+ 	 console.log("createTiemEntry");
+
     var project, start = new Date(),
       entry = {
         time_entry: {
-          start: start.toISOString(),
+          start: timeEntry.start || start.toISOString(),
           description: timeEntry.description || "",
           wid: TogglButton.$user.default_wid,
           pid: timeEntry.projectId || null,
           tags: timeEntry.tags || null,
           billable: timeEntry.billable || false,
-          duration: -(start.getTime() / 1000),
+          duration: timeEntry.duration || -(start.getTime() / 1000),
           created_with: timeEntry.createdWith || TogglButton.$fullVersion,
           duronly: !TogglButton.$user.store_start_and_stop_time
         }
       };
+	  
 
     if (timeEntry.projectName !== null) {
       project = TogglButton.findProjectByName(timeEntry.projectName);

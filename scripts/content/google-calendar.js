@@ -3,7 +3,7 @@
 'use strict';
 
 togglbutton.render('.eb-root:not(.toggl), .ep:not(.toggl)', {observe: true}, function (elem) {
-  var link, description, togglButtonElement, sa, startDate, startTime, stopTime, duration;
+  var link, description, togglButtonElement, sa, startDate = new Date(), startTime, stopTime, duration;
 
   if ($('.eb-title', elem) !== null) {
     togglButtonElement = $('.eb-date', elem);
@@ -28,7 +28,7 @@ togglbutton.render('.eb-root:not(.toggl), .ep:not(.toggl)', {observe: true}, fun
   link = togglbutton.createTimerLink({
     className: 'google-calendar',
     description: description,
-	  startDate: startDate,
+	  startDate: startDate.toISOString(),
 	  duration: duration
   });
 
