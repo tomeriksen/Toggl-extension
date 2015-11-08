@@ -1,5 +1,6 @@
 /*jslint indent: 2, unparam: true, plusplus: true, nomen: true */
 /*global window: false, XMLHttpRequest: false, WebSocket: false, chrome: false, btoa: false, localStorage:false, document: false, Audio: false, Bugsnag: false */
+//Contains TogglButton which controls the behaviour connected to the link in Google Calendar
 "use strict";
 
 Bugsnag.apiKey = "7419717b29de539ab0fbe35dcd7ca19d";
