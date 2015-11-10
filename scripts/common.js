@@ -230,6 +230,8 @@ var togglbutton = {
       chrome.extension.sendMessage(request);
       closeTagsList(true);
       editForm.style.display = "none";
+	  //save projectID in cookie
+	  setCookie (request.description,request.pid,1000);
     };
 
     updateTags = function (open) {
@@ -402,7 +404,7 @@ var togglbutton = {
       link.classList.add('active');
       link.style.color = '#1ab351';
       if (params.buttonType !== 'minimal') {
-        link.innerHTML = 'Stop timer';
+        link.innerHTML = 'Delete this';
       }
     }
 
@@ -410,7 +412,7 @@ var togglbutton = {
       link.classList.remove('active');
       link.style.color = '';
       if (params.buttonType !== 'minimal') {
-        link.innerHTML = 'Start timer';
+        link.innerHTML = 'Toggl this';
       }
     }
 
@@ -429,7 +431,7 @@ var togglbutton = {
       if (link.classList.contains('active')) {
         deactivate();
         opts = {
-          type: 'stop',
+          type: 'delete',
           service: togglbutton.serviceName
         };
       } else {
@@ -482,13 +484,13 @@ var togglbutton = {
     if (!entry || togglbutton.currentDescription !== entry.description) {
       link.classList.remove('active');
       if (!minimal) {
-        linkText = 'Start timer';
+        linkText = 'Toggl this';
       }
     } else {
       link.classList.add('active');
       color = '#1ab351';
       if (!minimal) {
-        linkText = 'Stop timer';
+        linkText = 'Delete this';
       }
     }
     link.style.color = color;

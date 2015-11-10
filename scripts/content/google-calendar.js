@@ -20,10 +20,9 @@ togglbutton.render('.eb-root:not(.toggl), .ep:not(.toggl)', {observe: true}, fun
     togglButtonElement = $('.ep-dpc .ep-drs', elem);
     description = $('.ep .ep-title input', elem).value;
   }
-  var projectID, clientID;
+  var projectID;
   //lookup id description can help us guess projects
-  projectID=11341529; //funkar bara tomvonmom
-  //getCookie(description);
+  projectID = getCookie(description);
 
   
   
