@@ -242,8 +242,6 @@ var TogglButton = {
   },
 
   createTimeEntry: function (timeEntry, sendResponse) {
- 	 console.log("createTiemEntry");
-
     var project, start = new Date(),
       entry = {
         time_entry: {
@@ -258,13 +256,24 @@ var TogglButton = {
           duronly: !TogglButton.$user.store_start_and_stop_time
         }
       };
+      chrome.notifications.create(
+        'toggl-entry-created',
+        {
+          type: 'basic',
+          iconUrl: 'images/icon-128.png',
+          title: "Toggl Button",
+          message: "Time entry created",
+          buttons: [
+            { title: "Ok"},
+            { title: "Delete"}
+          ]
+        },
+        function () {
+          return;
+        }
+      );
 	  
 
-    if (timeEntry.projectName !== null) {
-      project = TogglButton.findProjectByName(timeEntry.projectName);
-      entry.time_entry.pid = project && project.id;
-      entry.time_entry.billable = project && project.billable;
-    }
 
     TogglButton.ajax('/time_entries', {
       method: 'POST',
@@ -389,7 +398,82 @@ var TogglButton = {
 
     return true;
   },
+  
+  deleteTimeEntry: function (timeEntry, sendResponse) {
+    if (!TogglButton.$curEntry) { return; }
+    
 
+    TogglButton.ajax("/time_entries/" + TogglButton.$curEntry.id, {
+      method: 'DELETE',
+      onLoad: function (xhr) {
+        if (xhr.status === 200) {
+          TogglButton.$timer = TogglButton.$curEntry = null;
+          TogglButton.setBrowserAction(null);
+          if (!!timeEntry.respond) {
+            sendResponse({success: true, type: "Delete"});
+            chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+              chrome.tabs.sendMessage(tabs[0].id, {type: "delete-entry"});
+            });
+          }
+
+	      chrome.notifications.create(
+	        'toggl-deleted',
+	        {
+	          type: 'basic',
+	          iconUrl: 'images/icon-128.png',
+	          title: "Toggl Button",
+	          message: "Post was deleted successfully",
+	          buttons: [{ title: "Ok"}]
+	        },
+	        function () {
+	          return;
+	        }
+	      );
+		  
+          chrome.alarms.clear('PomodoroTimer');
+		  
+          TogglButton.triggerNotification();
+          TogglButton.analytics(timeEntry.type, timeEntry.service);
+        }
+      }
+    });
+  },
+
+  pomodoroAlarmStop: function (alarm) {
+    if (alarm.name === 'PomodoroTimer') {
+      TogglButton.stopTimeEntry({type: 'pomodoro-stop'});
+
+      var notificationId = 'pomodoro-time-is-up',
+        stopSound;
+      TogglButton.hideNotification(notificationId);
+      chrome.notifications.create(
+        notificationId,
+        {
+          type: 'basic',
+          iconUrl: 'images/icon-128.png',
+          title: "Time is up!",
+          message: "Take a break",
+          priority: 2,
+          buttons: [
+            { title: "Restart timer"},
+            { title: "Open Tracker"}
+          ]
+        },
+        function () {
+          return;
+        }
+      );
+
+      if (TogglButton.$pomodoroSoundEnabled) {
+        stopSound = new Audio();
+        stopSound.src = 'sounds/time_is_up_1.mp3'; //As an option we can add multiple sounds and make it configurable
+        stopSound.play();
+      }
+    }
+
+    return true;
+  },
+  
   updateTimeEntry: function (timeEntry, sendResponse) {
     var entry, project;
     if (!TogglButton.$curEntry) { return; }
@@ -826,6 +910,8 @@ var TogglButton = {
         TogglButton.updateTimeEntry(request, sendResponse);
       } else if (request.type === 'stop') {
         TogglButton.stopTimeEntry(request, sendResponse);
+    	} else if (request.type === 'delete') {
+      TogglButton.deleteTimeEntry(request, sendResponse);
       } else if (request.type === 'toggle-popup') {
         localStorage.setItem("showPostPopup", request.state);
         TogglButton.$showPostPopup = request.state;

@@ -291,6 +291,7 @@ var togglbutton = {
       e.preventDefault();
     });
 
+//user clicks link
     $(".toggl-button", editForm).addEventListener('click', function (e) {
       var link;
       e.preventDefault();
@@ -300,7 +301,7 @@ var togglbutton = {
       if (!link.classList.contains("min")) {
         link.innerHTML = 'Start timer';
       }
-      chrome.extension.sendMessage({type: 'stop'}, togglbutton.addEditForm);
+      chrome.extension.sendMessage({type: 'delete'}, togglbutton.addEditForm);
       closeTagsList(true);
       editForm.style.display = "none";
       return false;

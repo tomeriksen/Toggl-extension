@@ -24,7 +24,7 @@
       "js": [ "scripts/content/google-mail.js" ],
       "matches": [ "*://mail.google.com/*" ]
    }, {
-      "js": [ "scripts/content/google-calendar.js" ],
+      "js": [ "scripts/content/google-calendar.js"],
       "matches": [ "*://www.google.com/calendar/*", "*://calendar.google.com/calendar*" ]
    } ],
    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'",
